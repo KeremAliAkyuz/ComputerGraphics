@@ -1,0 +1,58 @@
+<html>
+<body>
+   <canvas id="glcanvas" width="512" height="512"></canvas>
+   <div class=""></div>
+
+   <button id="StartRotationButton">Start Rotation</button>
+   <button id="StopRotationButton">Stop Rotation</button>
+   <button id = "DirectionButton">
+		Change Rotation Direction
+	</button>
+
+	<select id="mymenu" size="3">
+		<option value="0">Red</option>
+		<option value="1">Green</option>
+		<option value="2">Blue</option>
+	</select>
+
+
+  </script>
+  <p>Speed Slider (+ -) - (Also you can press + or - on your keyboard) </p>
+  <div class="slidecontainer">
+  <input type="range" min="0" max="4" value="2" class="slider" id="myRange">
+  </div>
+
+</body>
+<script id="vertex-shader" type="x-shader/x-vertex">
+   attribute vec4 vPosition;
+   uniform float theta;
+
+
+   void main() {
+	gl_Position.x = cos(theta) * vPosition.x - sin(theta) * vPosition.y;
+	gl_Position.y = sin(theta) * vPosition.x + cos(theta) * vPosition.y;
+	gl_Position.z = 0.0;
+	gl_Position.w = 1.0;
+
+
+}
+
+</script>
+<script id="fragment-shader" type="x-shader/x-fragment">
+   precision mediump float;
+   uniform vec4 color;
+
+   void main() {
+
+      gl_FragColor = color;
+
+     }
+
+</script>
+
+<script src="../common/initShaders.js"></script>
+<script src="../common/MV.js"></script>
+<script src="../common/webgl-utils.js"></script>
+<script src="19290792.js"></script>
+
+</html>
